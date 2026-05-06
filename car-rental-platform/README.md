@@ -1,4 +1,4 @@
-<img width="1080" height="595" alt="{8B4DD57B-CC78-41C3-9562-BE2BE9F7275F}" src="https://github.com/user-attachments/assets/237b008e-42a6-4157-a6c3-fc9ec9b80446" />
+
 
 # Car Rental Platform
 
@@ -44,13 +44,7 @@ car-rental-platform/
 ```
 
 ## Screenshots
-<img width="1079" height="601" alt="{9834B457-4755-47F2-8276-404CF2BEC6B7}" src="https://github.com/user-attachments/assets/cfbd780d-45b1-4895-8b68-364665c490fc" />
-<img width="1080" height="599" alt="{CE2B03CA-55DE-4E56-B887-6D51A559AC58}" src="https://github.com/user-attachments/assets/51f8c81f-b74b-48f8-9045-b517274f6a57" />
-<img width="1080" height="601" alt="{B07D572C-AA9A-42D9-A658-7B6AE899C3DA}" src="https://github.com/user-attachments/assets/cf0a92f6-e33d-4347-9769-fa3a9318ed4f" />
-<img width="1080" height="601" alt="{4CB18A87-22B9-435F-9154-E0EF36CE7B15}" src="https://github.com/user-attachments/assets/535c67ab-caf3-4c6c-b3ba-37df54bc5ba5" />
-<img width="1080" height="594" alt="{CB1D1AEE-A292-40AB-8ACC-2E3D2A0CEED2}" src="https://github.com/user-attachments/assets/7cf572a3-d3ca-4be9-895f-242fb5d8d7a5" />
-<img width="1070" height="598" alt="{4A37B5C6-E94B-430B-9909-908117B34F1C}" src="https://github.com/user-attachments/assets/d49a144a-d916-4045-9cfa-b19920939b39" />
-<img width="1080" height="599" alt="{FCFB4F07-D784-4A33-AF7E-76ECC50BE33D}" src="https://github.com/user-attachments/assets/0899c972-d878-46e3-8298-6ee49eeeb336" />
+
 
 
 ## Tech Stack
