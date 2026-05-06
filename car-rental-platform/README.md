@@ -1,5 +1,4 @@
 
-
 # Car Rental Platform
 
 A full-stack car rental application with separate portals for customers and hosts. Built with Spring Boot backend, React frontend, PostgreSQL database, and Cloudinary for image storage.
@@ -44,6 +43,22 @@ car-rental-platform/
 ```
 
 ## Screenshots
+
+<img width="1080" height="599" alt="{FCFB4F07-D784-4A33-AF7E-76ECC50BE33D}" src="https://github.com/user-attachments/assets/8a40fc06-550f-4670-af63-f7a9e13a30ae" />
+
+<img width="1070" height="598" alt="{4A37B5C6-E94B-430B-9909-908117B34F1C}" src="https://github.com/user-attachments/assets/3ab4045f-f77c-4275-8d49-d8fc86d5409c" />
+
+<img width="1080" height="594" alt="{CB1D1AEE-A292-40AB-8ACC-2E3D2A0CEED2}" src="https://github.com/user-attachments/assets/0cf8664d-b595-4528-96df-db3d48b87b15" />
+
+<img width="1080" height="601" alt="{4CB18A87-22B9-435F-9154-E0EF36CE7B15}" src="https://github.com/user-attachments/assets/b1bf189f-de9d-4da0-bff6-35b46ba5716d" />
+
+<img width="1080" height="601" alt="{B07D572C-AA9A-42D9-A658-7B6AE899C3DA}" src="https://github.com/user-attachments/assets/18a732df-c32a-4be3-b4c6-25ff7fc796cf" />
+
+<img width="1080" height="599" alt="{CE2B03CA-55DE-4E56-B887-6D51A559AC58}" src="https://github.com/user-attachments/assets/556af8f2-e32d-448d-8ab8-eaeb810b0a10" />
+
+<img width="1079" height="601" alt="{9834B457-4755-47F2-8276-404CF2BEC6B7}" src="https://github.com/user-attachments/assets/238eb573-763a-46e7-9558-742fc7b4caf3" />
+
+<img width="1080" height="595" alt="{8B4DD57B-CC78-41C3-9562-BE2BE9F7275F}" src="https://github.com/user-attachments/assets/a6366a72-68ee-424b-b438-c41ab470b462" />
 
 
 
