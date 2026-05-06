@@ -1,0 +1,160 @@
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 40px 0;
+}
+
+.dashboard-header h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.dashboard-header p {
+  font-size: 18px;
+  color: #666;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.dashboard-card {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.dashboard-card h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.dashboard-card p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.car-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.car-images {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.detail-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.no-image {
+  width: 100%;
+  height: 400px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #999;
+}
+
+.car-info h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.car-age {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.car-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: #007bff;
+  margin-bottom: 30px;
+}
+
+.booking-form {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.booking-form h3 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.booking-summary {
+  background-color: white;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border-left: 4px solid #007bff;
+}
+
+.booking-summary p {
+  margin: 5px 0;
+  color: #333;
+}
+
+.total-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #007bff;
+}
+
+@media (max-width: 768px) {
+  .car-details {
+    grid-template-columns: 1fr;
+  }
+
+  .image-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header h1 {
+    font-size: 24px;
+  }
+}
