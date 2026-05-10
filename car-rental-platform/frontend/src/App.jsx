@@ -49,14 +49,7 @@ function App() {
         <Route path="/register" element={<Register setUser={setUser} />} />
 
         {/* Customer Routes */}
-        <Route
-          path="/customer/dashboard"
-          element={
-            <PrivateRoute user={user} role="CUSTOMER">
-              <CustomerDashboard />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/customer/browse" element={<BrowseCars />} />
         <Route
           path="/customer/browse"
           element={
