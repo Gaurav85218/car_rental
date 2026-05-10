@@ -125,7 +125,7 @@ function App() {
         />
 
         {/* Default Route */}
-        <Route path="/" element={<Navigate to={user ? (user.role === 'CUSTOMER' ? '/customer/dashboard' : '/host/dashboard') : '/login'} />} />
+        <Route path="/" element={<Navigate to={user ? (user.role === 'CUSTOMER' ? '/customer/dashboard' : '/host/dashboard') : '/customer/browse'} />} />
       </Routes>
     </Router>
   );

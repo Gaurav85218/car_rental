@@ -28,7 +28,7 @@ public class CarController {
     private CarService carService;
 
 
-    @Autowired // Add this to fix the red 'userService'
+    @Autowired
     private UserService userService;
 
     @GetMapping("/browse")
