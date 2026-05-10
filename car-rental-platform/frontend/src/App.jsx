@@ -42,7 +42,7 @@ function App() {
 
   return (
     <Router>
-      {user && <Navbar user={user} setUser={setUser} />}
+      <Navbar user={user} setUser={setUser} />
       <Routes>
         {/* Public Routes */}
         <Route path="/login" element={<Login setUser={setUser} />} />
