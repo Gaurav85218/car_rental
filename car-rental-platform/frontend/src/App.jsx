@@ -49,31 +49,35 @@ function App() {
         <Route path="/register" element={<Register setUser={setUser} />} />
 
         {/* Customer Routes */}
-        <Route path="/customer/browse" element={<BrowseCars />} />
-        <Route
-          path="/customer/browse"
-          element={
-            <PrivateRoute user={user} role="CUSTOMER">
-              <BrowseCars />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/customer/car/:id"
-          element={
-            <PrivateRoute user={user} role="CUSTOMER">
-              <CarDetails />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/customer/bookings"
-          element={
-            <PrivateRoute user={user} role="CUSTOMER">
-              <BookingHistory />
-            </PrivateRoute>
-          }
-        />
+        {/* Customer Routes */}
+<Route
+  path="/customer/dashboard"
+  element={
+    <PrivateRoute user={user} role="CUSTOMER">
+      <CustomerDashboard />
+    </PrivateRoute>
+  }
+/>
+
+<Route path="/customer/browse" element={<BrowseCars />} />
+
+<Route
+  path="/customer/car/:id"
+  element={
+    <PrivateRoute user={user} role="CUSTOMER">
+      <CarDetails />
+    </PrivateRoute>
+  }
+/>
+
+<Route
+  path="/customer/bookings"
+  element={
+    <PrivateRoute user={user} role="CUSTOMER">
+      <BookingHistory />
+    </PrivateRoute>
+  }
+/>
 
         {/* Host Routes */}
         <Route
