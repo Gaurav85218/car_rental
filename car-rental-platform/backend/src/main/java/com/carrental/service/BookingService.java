@@ -88,25 +88,31 @@ public class BookingService {
     public List<BookingResponse> getBookingsByUserId(Long userId) {
         return bookingRepository.findByUserId(userId).stream()
                 .map(this::mapToResponse)
-                .collect(Collectors.toList());
+                .toList(); // Cleaner syntax for modern Java
     }
 
     public List<BookingResponse> getBookingsByCarId(Long carId) {
         return bookingRepository.findByCarId(carId).stream()
                 .map(this::mapToResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<BookingResponse> getBookingsByHostId(Long hostId) {
+        // 1. Get the host's cars
         List<Car> hostCars = carRepository.findByHostId(hostId);
-        List<Long> carIds = hostCars.stream().map(Car::getId).collect(Collectors.toList());
 
-        return bookingRepository.findAll().stream()
-                .filter(booking -> carIds.contains(booking.getCarId()))
+        // 2. If the host has no cars, return an empty list immediately without hitting the DB
+        if (hostCars.isEmpty()) {
+            return List.of();
+        }
+
+        List<Long> carIds = hostCars.stream().map(Car::getId).toList();
+
+        // 3. Let the database filter by the specific car IDs (Highly Optimized)
+        return bookingRepository.findByCarIdIn(carIds).stream()
                 .map(this::mapToResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
-
     public BookingResponse cancelBooking(Long bookingId, Long userId) {
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
