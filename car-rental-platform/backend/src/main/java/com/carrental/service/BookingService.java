@@ -46,10 +46,11 @@ public class BookingService {
 
         // Check car availability
         List<Booking> conflictingBookings = bookingRepository
-                .findByCarIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(
+                .findByCarIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualAndStatusNot(
                         request.getCarId(),
                         request.getEndDate(),
-                        request.getStartDate()
+                        request.getStartDate(),
+                        BookingStatus.CANCELLED
                 );
 
         if (!conflictingBookings.isEmpty()) {
