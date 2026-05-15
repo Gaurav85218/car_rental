@@ -39,6 +39,10 @@ public class BookingService {
         if (request.getEndDate().isBefore(request.getStartDate())) {
             throw new IllegalArgumentException("End date must be after start date");
         }
+        long requestedDays = ChronoUnit.DAYS.between(request.getStartDate(), request.getEndDate());
+        if (requestedDays > 5) {
+            throw new IllegalArgumentException("Booking duration cannot exceed 5 days");
+        }
 
         // Check car availability
         List<Booking> conflictingBookings = bookingRepository

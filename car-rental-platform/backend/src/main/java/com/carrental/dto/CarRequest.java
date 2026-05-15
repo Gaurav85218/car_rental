@@ -23,3 +23,4 @@ public class CarRequest {
     @Min(value = 0, message = "Price must be positive")
     private Double pricePerDay;
 }
+
