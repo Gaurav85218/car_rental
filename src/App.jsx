@@ -42,45 +42,42 @@ function App() {
 
   return (
     <Router>
-      {user && <Navbar user={user} setUser={setUser} />}
+      <Navbar user={user} setUser={setUser} />
       <Routes>
         {/* Public Routes */}
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
 
+       
         {/* Customer Routes */}
-        <Route
-          path="/customer/dashboard"
-          element={
-            <PrivateRoute user={user} role="CUSTOMER">
-              <CustomerDashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/customer/browse"
-          element={
-            <PrivateRoute user={user} role="CUSTOMER">
-              <BrowseCars />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/customer/car/:id"
-          element={
-            <PrivateRoute user={user} role="CUSTOMER">
-              <CarDetails />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/customer/bookings"
-          element={
-            <PrivateRoute user={user} role="CUSTOMER">
-              <BookingHistory />
-            </PrivateRoute>
-          }
-        />
+<Route
+  path="/customer/dashboard"
+  element={
+    <PrivateRoute user={user} role="CUSTOMER">
+      <CustomerDashboard />
+    </PrivateRoute>
+  }
+/>
+
+<Route path="/customer/browse" element={<BrowseCars />} />
+
+<Route
+  path="/customer/car/:id"
+  element={
+    <PrivateRoute user={user} role="CUSTOMER">
+      <CarDetails />
+    </PrivateRoute>
+  }
+/>
+
+<Route
+  path="/customer/bookings"
+  element={
+    <PrivateRoute user={user} role="CUSTOMER">
+      <BookingHistory />
+    </PrivateRoute>
+  }
+/>
 
         {/* Host Routes */}
         <Route
@@ -125,7 +122,7 @@ function App() {
         />
 
         {/* Default Route */}
-        <Route path="/" element={<Navigate to={user ? (user.role === 'CUSTOMER' ? '/customer/dashboard' : '/host/dashboard') : '/login'} />} />
+        <Route path="/" element={<Navigate to={user ? (user.role === 'CUSTOMER' ? '/customer/dashboard' : '/host/dashboard') : '/customer/browse'} />} />
       </Routes>
     </Router>
   );

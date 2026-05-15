@@ -20,27 +20,66 @@ const Navbar = ({ user, setUser }) => {
         </Link>
 
         <div className="navbar-menu">
-          {user?.role === 'CUSTOMER' ? (
+          {/* Public navbar */}
+          {!user && (
             <>
-              <Link to="/customer/dashboard" className="nav-link">Dashboard</Link>
-              <Link to="/customer/browse" className="nav-link">Browse Cars</Link>
-              <Link to="/customer/bookings" className="nav-link">My Bookings</Link>
+              <Link to="/customer/browse" className="nav-link">
+                Browse Cars
+              </Link>
+              <Link to="/login" className="nav-link">
+                Login
+              </Link>
+              <Link to="/register" className="nav-link">
+                Register
+              </Link>
             </>
-          ) : (
+          )}
+
+          {/* Customer navbar */}
+          {user?.role === 'CUSTOMER' && (
             <>
-              <Link to="/host/dashboard" className="nav-link">Dashboard</Link>
-              <Link to="/host/add-car" className="nav-link">Add Car</Link>
-              <Link to="/host/manage-cars" className="nav-link">Manage Cars</Link>
-              <Link to="/host/bookings" className="nav-link">Bookings</Link>
+              <Link to="/customer/dashboard" className="nav-link">
+                Dashboard
+              </Link>
+              <Link to="/customer/browse" className="nav-link">
+                Browse Cars
+              </Link>
+              <Link to="/customer/bookings" className="nav-link">
+                My Bookings
+              </Link>
+            </>
+          )}
+
+          {/* Host navbar */}
+          {user?.role === 'HOST' && (
+            <>
+              <Link to="/host/dashboard" className="nav-link">
+                Dashboard
+              </Link>
+              <Link to="/host/add-car" className="nav-link">
+                Add Car
+              </Link>
+              <Link to="/host/manage-cars" className="nav-link">
+                Manage Cars
+              </Link>
+              <Link to="/host/bookings" className="nav-link">
+                Bookings
+              </Link>
             </>
           )}
         </div>
 
         <div className="navbar-user">
-          <span className="user-name">{user?.username}</span>
-          <button onClick={handleLogout} className="button button-secondary">
-            Logout
-          </button>
+          {user ? (
+            <>
+              <span className="user-name">{user.username}</span>
+              <button onClick={handleLogout} className="button button-secondary">
+                Logout
+              </button>
+            </>
+          ) : (
+            <span className="user-name">Guest</span>
+          )}
         </div>
       </div>
     </nav>
