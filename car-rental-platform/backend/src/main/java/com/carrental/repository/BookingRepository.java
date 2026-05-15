@@ -21,5 +21,5 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> findByCarIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualAndStatusNot(
             Long carId, LocalDate endDate, LocalDate startDate, BookingStatus status);
 
-    Collection<Object> findByCarIdIn(List<Long> carIds);
+    List<Booking> findByCarIdIn(List<Long> carIds);
 }
