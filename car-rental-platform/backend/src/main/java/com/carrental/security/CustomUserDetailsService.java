@@ -1,4 +1,4 @@
-package com.carrental.security; // Updated package name
+package com.carrental.security;
 
 import com.carrental.entity.User;
 import com.carrental.repository.UserRepository;
@@ -15,10 +15,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
 
+        // Return your custom principal carrying the database ID
         return new CustomUserDetails(user);
     }
 }

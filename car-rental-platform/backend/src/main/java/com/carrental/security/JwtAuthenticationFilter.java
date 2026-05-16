@@ -24,15 +24,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService; // Kept as-is
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
         String path = request.getServletPath();
-
-
 
         // Bypass JWT check for auth endpoints to prevent 403 errors
         if (path.startsWith("/api/auth/")) {
@@ -46,6 +44,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 String jwt = authHeader.substring(7);
                 if (jwtUtil.validateToken(jwt)) {
                     String username = jwtUtil.extractUsername(jwt);
+
+                    // This loads your CustomUserDetails with the real DB user id
                     UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
                     UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(

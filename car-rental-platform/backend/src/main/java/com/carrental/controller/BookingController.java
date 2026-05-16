@@ -2,6 +2,7 @@ package com.carrental.controller;
 
 import com.carrental.dto.BookingRequest;
 import com.carrental.dto.BookingResponse;
+import com.carrental.security.CustomUserDetails;
 import com.carrental.service.BookingService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,10 +28,11 @@ public class BookingController {
             @Valid @RequestBody BookingRequest request,
             Authentication authentication) {
 
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        // CHANGED: Direct cast to CustomUserDetails
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         log.info("Create booking request from user: {}", userDetails.getUsername());
 
-        Long userId = extractUserIdFromAuthentication(authentication);
+        Long userId = userDetails.getId(); // OPTIMIZATION: Extract ID directly without helper method!
         BookingResponse booking = bookingService.createBooking(request, userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(booking);
     }
@@ -45,20 +46,22 @@ public class BookingController {
 
     @GetMapping("/my-bookings")
     public ResponseEntity<List<BookingResponse>> getMyBookings(Authentication authentication) {
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        // CHANGED: Direct cast to CustomUserDetails
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         log.info("Get bookings for user: {}", userDetails.getUsername());
 
-        Long userId = extractUserIdFromAuthentication(authentication);
+        Long userId = userDetails.getId(); // OPTIMIZATION: Get ID directly
         List<BookingResponse> bookings = bookingService.getBookingsByUserId(userId);
         return ResponseEntity.ok(bookings);
     }
 
     @GetMapping("/host/bookings")
     public ResponseEntity<List<BookingResponse>> getHostBookings(Authentication authentication) {
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        // CHANGED: Direct cast to CustomUserDetails
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         log.info("Get bookings for host: {}", userDetails.getUsername());
 
-        Long hostId = extractUserIdFromAuthentication(authentication);
+        Long hostId = userDetails.getId(); // OPTIMIZATION: Get ID directly
         List<BookingResponse> bookings = bookingService.getBookingsByHostId(hostId);
         return ResponseEntity.ok(bookings);
     }
@@ -68,18 +71,12 @@ public class BookingController {
             @PathVariable Long id,
             Authentication authentication) {
 
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        // CHANGED: Direct cast to CustomUserDetails
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         log.info("Cancel booking request from user: {}", userDetails.getUsername());
 
-        Long userId = extractUserIdFromAuthentication(authentication);
+        Long userId = userDetails.getId(); // OPTIMIZATION: Get ID directly
         BookingResponse booking = bookingService.cancelBooking(id, userId);
         return ResponseEntity.ok(booking);
-    }
-
-    private Long extractUserIdFromAuthentication(Authentication authentication) {
-        // This is a placeholder - you need to implement proper user ID extraction
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        // For now, return a dummy ID - implement proper logic based on your User entity
-        return 1L; // This should be replaced with actual user ID extraction
     }
 }
