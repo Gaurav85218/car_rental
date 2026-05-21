@@ -48,6 +48,14 @@ public class User implements UserDetails {
     @Column(name = "created_at", nullable = false, updatable = false)
     private Long createdAt;
 
+    // --- ADDED FOR FORGOT PASSWORD FUNCTIONALITY ---
+    @Column(name = "reset_token")
+    private String resetToken;
+
+    @Column(name = "reset_token_expiry")
+    private java.time.LocalDateTime resetTokenExpiry;
+    // -----------------------------------------------
+
     @PrePersist
     protected void onCreate() {
         createdAt = System.currentTimeMillis();
