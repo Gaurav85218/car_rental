@@ -5,6 +5,8 @@ import './App.css';
 // Auth Pages
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import ForgotPassword from './pages/auth/ForgotPassword';
+import ResetPassword from './pages/auth/ResetPassword';
 
 // Customer Pages
 import CustomerDashboard from './pages/customer/Dashboard';
@@ -47,9 +49,11 @@ function App() {
         {/* Public Routes */}
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
 
-       
         {/* Customer Routes */}
+        
 <Route
   path="/customer/dashboard"
   element={
