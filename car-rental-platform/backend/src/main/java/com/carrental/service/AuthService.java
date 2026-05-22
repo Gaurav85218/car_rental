@@ -42,6 +42,9 @@ public class AuthService {
     @Autowired
     private JavaMailSender mailSender;
 
+    @Value("${SPRING_MAIL_USERNAME}")
+    private String senderEmail;
+
     public AuthResponse register(RegisterRequest request) {
         if (userRepository.existsByUsername(request.getUsername())) {
             return AuthResponse.builder().message("Username already exists").build();
@@ -138,11 +141,9 @@ public class AuthService {
 
         return AuthResponse.builder().message("Password updated successfully.").build();
     }
-    @Value("${SPRING_MAIL_USERNAME}")
     public void sendResetEmail(String toEmail, String simpleCode) {
-        String email = "";
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(email);
+        message.setFrom(senderEmail);
         message.setTo(toEmail);
         message.setSubject("Your Reset Code");
         message.setText("Your password reset code is: " + simpleCode);
