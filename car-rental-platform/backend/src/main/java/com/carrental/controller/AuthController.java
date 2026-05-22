@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/auth")
 @Slf4j
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000"})
+@CrossOrigin(origins = {
+        "https://car-rental-ruddy-sigma.vercel.app", // 👈 Removed the trailing /
+        "http://localhost:5173",                     // 👈 Added your actual Vite port
+        "http://localhost:3000"
+})
 public class AuthController {
 
     @Autowired
