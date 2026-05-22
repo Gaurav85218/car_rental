@@ -21,7 +21,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/cars")
 @Slf4j
-@CrossOrigin(origins = {"https://car-rental-ruddy-sigma.vercel.app/", "http://localhost:3000"})
+@CrossOrigin(origins = {
+        "https://car-rental-ruddy-sigma.vercel.app", // 👈 Removed the trailing /
+        "http://localhost:5173",                     // 👈 Added your actual Vite port
+        "http://localhost:3000"
+})
 public class CarController {
 
     @Autowired
