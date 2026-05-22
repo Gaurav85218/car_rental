@@ -11,6 +11,7 @@ import com.carrental.repository.UserRepository;
 import com.carrental.security.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -137,10 +138,11 @@ public class AuthService {
 
         return AuthResponse.builder().message("Password updated successfully.").build();
     }
-
+    @Value("${SPRING_MAIL_USERNAME}")
     public void sendResetEmail(String toEmail, String simpleCode) {
+        String email = "";
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("gaurav81521@gmail.com");
+        message.setFrom(email);
         message.setTo(toEmail);
         message.setSubject("Your Reset Code");
         message.setText("Your password reset code is: " + simpleCode);
