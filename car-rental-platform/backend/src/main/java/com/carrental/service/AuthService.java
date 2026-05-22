@@ -105,7 +105,7 @@ public class AuthService {
         // Generate 6-digit numeric string code
         String simpleCode = String.valueOf((int)((Math.random() * 900000) + 100000));
         user.setResetToken(simpleCode);
-        user.setResetTokenExpiry(LocalDateTime.now().plusMinutes(15));
+        user.setResetTokenExpiry(LocalDateTime.now().plusMinutes(3));
         userRepository.save(user);
 
         // FIX: Actually trigger the email delivery process!
