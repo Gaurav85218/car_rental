@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://car-rental-e9te.onrender.com/api';
+const API_BASE_URL = 'http://13.51.195.112:8080/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
