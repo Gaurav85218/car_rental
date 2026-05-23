@@ -66,7 +66,12 @@ public class SecurityConfig {
         // Fix: Add both 5173 and 5174 to be safe
         configuration.setAllowedOrigins(Arrays.asList(
                 "http://localhost:5173",
-                "https://car-rental-ruddy-sigma.vercel.app/"
+                "http://localhost:5174",
+                "http://localhost:3000",
+                "http://localhost:8081",   // ← Expo web
+                "http://localhost:8082",
+                "http://localhost:19006",  // ← Expo legacy web
+                "https://car-rental-ruddy-sigma.vercel.app"  // ← removed trailing slash
         ));
 
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
