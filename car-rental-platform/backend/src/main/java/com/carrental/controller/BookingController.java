@@ -17,7 +17,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/bookings")
 @Slf4j
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000"})
+@CrossOrigin(origins = {
+        "https://car-rental-ruddy-sigma.vercel.app",
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "http://localhost:8081",
+        "http://localhost:8082",
+        "http://localhost:19006"
+})
 public class BookingController {
 
     @Autowired
