@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://13.51.195.112:8080';
+const API_BASE_URL = 'carrental.duckdns.org';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
