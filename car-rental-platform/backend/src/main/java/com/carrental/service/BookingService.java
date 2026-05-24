@@ -153,14 +153,13 @@ public class BookingService {
                 .build();
     }
     public List<BookedDateRangeResponse> getBookedDatesForCar(Long carId) {
-
         List<Booking> bookings = bookingRepository
                 .findByCarIdAndStatusNot(carId, BookingStatus.CANCELLED);
 
         return bookings.stream()
                 .map(b -> new BookedDateRangeResponse(
-                        b.getStartDate().toString(),
-                        b.getEndDate().toString()
+                        b.getStartDate(),
+                        b.getEndDate()
                 ))
                 .collect(Collectors.toList());
     }
