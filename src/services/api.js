@@ -68,6 +68,7 @@ export const bookingAPI = {
   getMyBookings: () => api.get('/bookings/my-bookings'),
   getHostBookings: () => api.get('/bookings/host/bookings'),
   cancelBooking: (id) => api.put(`/bookings/${id}/cancel`),
+  getBookedDatesForCar: (carId) => api.get(`/bookings/car/${carId}/booked-dates`),
 };
 
 export default api;
