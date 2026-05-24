@@ -153,11 +153,9 @@ public class BookingService {
                 .build();
     }
     public List<BookedDateRangeResponse> getBookedDatesForCar(Long carId) {
+
         List<Booking> bookings = bookingRepository
-                .findByCarIdAndStatusNotIn(
-                        carId,
-                        List.of(BookingStatus.CANCELLED)
-                );
+                .findByCarIdAndStatusNot(carId, BookingStatus.CANCELLED);
 
         return bookings.stream()
                 .map(b -> new BookedDateRangeResponse(

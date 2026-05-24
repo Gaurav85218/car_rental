@@ -22,4 +22,5 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
 
     List<Booking> findByCarIdIn(List<Long> carIds);
     List<Booking> findByCarIdAndStatusNotIn(Long carId, List<BookingStatus> statuses);
+    List<Booking> findByCarIdAndStatusNot(Long carId, BookingStatus status);
 }
