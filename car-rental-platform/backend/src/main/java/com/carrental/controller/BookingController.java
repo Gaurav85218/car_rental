@@ -1,5 +1,6 @@
 package com.carrental.controller;
 
+import com.carrental.dto.BookedDateRangeResponse;
 import com.carrental.dto.BookingRequest;
 import com.carrental.dto.BookingResponse;
 import com.carrental.security.CustomUserDetails;
@@ -85,5 +86,12 @@ public class BookingController {
         Long userId = userDetails.getId(); // OPTIMIZATION: Get ID directly
         BookingResponse booking = bookingService.cancelBooking(id, userId);
         return ResponseEntity.ok(booking);
+    }
+    @GetMapping("/car/{carId}/booked-dates")
+    public ResponseEntity<List<BookedDateRangeResponse>> getBookedDatesForCar(
+            @PathVariable Long carId) {
+        log.info("Get booked dates for car: {}", carId);
+        List<BookedDateRangeResponse> bookedDates = bookingService.getBookedDatesForCar(carId);
+        return ResponseEntity.ok(bookedDates);
     }
 }

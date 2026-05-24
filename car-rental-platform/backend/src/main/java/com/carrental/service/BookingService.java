@@ -1,5 +1,6 @@
 package com.carrental.service;
 
+import com.carrental.dto.BookedDateRangeResponse;
 import com.carrental.dto.BookingRequest;
 import com.carrental.dto.BookingResponse;
 import com.carrental.dto.CarResponse;
@@ -150,5 +151,19 @@ public class BookingService {
                 .createdAt(booking.getCreatedAt())
                 .car(carResponse)
                 .build();
+    }
+    public List<BookedDateRangeResponse> getBookedDatesForCar(Long carId) {
+        List<Booking> bookings = bookingRepository
+                .findByCarIdAndStatusNotIn(
+                        carId,
+                        List.of(BookingStatus.CANCELLED)
+                );
+
+        return bookings.stream()
+                .map(b -> new BookedDateRangeResponse(
+                        b.getStartDate().toString(),
+                        b.getEndDate().toString()
+                ))
+                .collect(Collectors.toList());
     }
 }
